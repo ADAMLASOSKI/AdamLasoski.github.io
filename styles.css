@@ -986,3 +986,159 @@ body {
     .footer::after { background-position: 70px -45px; background-size: 350px 245px; }
 }
 
+/* Decorative ship equipment lives in the sections below the home hero. */
+.fixture-console {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 8px;
+    letter-spacing: .08em;
+    color: #b7b9b9;
+}
+.fixture-console > span { position: absolute; display: block; }
+.fixture-exit {
+    padding: 5px 9px;
+    color: #a8bba7;
+    background: linear-gradient(#171d19, #080a09);
+    border: 1px solid #69736b;
+    box-shadow: inset 0 0 9px rgba(133,171,132,.12), 0 3px 7px #000;
+    font-weight: 700;
+}
+.fixture-exit b { margin-left: 5px; color: #c9d3c8; font-size: 12px; }
+.fixture-case {
+    width: 112px;
+    height: 69px;
+    padding: 7px 7px 4px;
+    color: #d0b9a2;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(95,28,24,.72), rgba(24,10,10,.96) 65%);
+    border: 2px solid #765c50;
+    outline: 1px solid #171717;
+    box-shadow: inset 0 0 12px rgba(208,115,76,.13), 0 5px 12px #000;
+}
+.fixture-case b { display: block; font-size: 8px; letter-spacing: .06em; }
+.fixture-case small { display: block; margin-top: 2px; font-size: 5px; white-space: nowrap; }
+.fixture-case i {
+    display: block;
+    width: 10px;
+    height: 27px;
+    margin: 4px auto 0;
+    border: 1px solid #b4614f;
+    border-radius: 5px 5px 2px 2px;
+    background: linear-gradient(90deg, #31100e, #a34839 45%, #501a17);
+    box-shadow: 0 0 5px rgba(207,94,67,.22);
+}
+.fixture-hv {
+    width: 79px;
+    padding: 6px 5px;
+    color: #c4b58f;
+    text-align: center;
+    border: 1px solid #655c44;
+    background: repeating-linear-gradient(135deg, #14130f 0 7px, #2a2518 7px 11px);
+    box-shadow: inset 0 0 8px #000, 0 4px 8px #000;
+}
+.fixture-hv b { display: block; font-size: 15px; line-height: 15px; color: #c9b679; }
+.fixture-hv small { font-size: 6px; }
+.fixture-switches {
+    width: 88px;
+    height: 43px;
+    padding: 7px 6px 4px;
+    border: 1px solid #575b5d;
+    background: linear-gradient(145deg, #25292b, #090a0b 70%);
+    box-shadow: inset 0 1px rgba(255,255,255,.12), 0 4px 9px #000;
+}
+.fixture-switches::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #a56c5d;
+    box-shadow: -8px 0 #77724f, 0 0 4px rgba(165,108,93,.45), -8px 0 4px rgba(119,114,79,.35);
+}
+.fixture-switches i {
+    display: inline-block;
+    width: 11px;
+    height: 18px;
+    margin-right: 7px;
+    vertical-align: middle;
+    border: 1px solid #565b5c;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #9a9d99 0 45%, #242728 46%);
+    box-shadow: 0 1px 3px #000;
+}
+.fixture-switches i:nth-child(2) { background: linear-gradient(180deg, #26292a 0 45%, #a0a39e 46%); }
+.fixture-switches b { display: block; margin-top: 4px; color: #85898a; font-size: 5px; }
+.fixture-spark { width: 50px; height: 32px; }
+.fixture-spark::before,
+.fixture-spark::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    width: 20px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(#777d80, #242729 60%, #080909);
+    box-shadow: 0 2px 3px #000;
+}
+.fixture-spark::before { left: 0; transform: rotate(-8deg); }
+.fixture-spark::after { right: 0; transform: rotate(8deg); }
+.fixture-spark i {
+    position: absolute;
+    top: 7px;
+    left: 22px;
+    width: 8px;
+    height: 17px;
+    background: #b9a777;
+    clip-path: polygon(45% 0, 70% 38%, 100% 28%, 62% 62%, 76% 100%, 31% 67%, 0 79%, 34% 43%);
+    filter: drop-shadow(0 0 4px rgba(211,177,103,.8));
+    animation: spark-flicker .8s steps(2,end) infinite alternate;
+}
+.fixture-spark i + i { left: 31px; top: 10px; transform: scale(.6) rotate(30deg); animation-delay: .2s; }
+@keyframes spark-flicker { from { opacity: .45; } to { opacity: 1; } }
+
+.fixture-console--about .fixture-exit { top: 28px; right: 7%; }
+.fixture-console--about .fixture-case { left: 3%; bottom: 23px; }
+.fixture-console--about .fixture-hv { right: 4%; top: 46%; }
+.fixture-console--about .fixture-switches { right: 13%; bottom: 28px; }
+.fixture-console--about .fixture-spark { left: 15%; top: 20%; transform: rotate(19deg); }
+.fixture-console--skills .fixture-exit { top: 22px; left: 7%; }
+.fixture-console--skills .fixture-case { right: 3%; top: 32%; transform: rotate(2deg); }
+.fixture-console--skills .fixture-hv { left: 5%; bottom: 28px; }
+.fixture-console--skills .fixture-switches { left: 15%; top: 24px; }
+.fixture-console--skills .fixture-spark { right: 16%; bottom: 27px; transform: rotate(-15deg); }
+.fixture-console--projects .fixture-exit { right: 5%; bottom: 26px; }
+.fixture-console--projects .fixture-case { left: 3%; top: 27%; transform: rotate(-2deg); }
+.fixture-console--projects .fixture-hv { right: 4%; top: 24px; }
+.fixture-console--projects .fixture-switches { right: 15%; top: 28%; }
+.fixture-console--projects .fixture-spark { left: 18%; bottom: 34px; transform: rotate(12deg); }
+.fixture-console--contact .fixture-exit { left: 5%; bottom: 22px; }
+.fixture-console--contact .fixture-case { right: 3%; top: 23px; transform: rotate(2deg); }
+.fixture-console--contact .fixture-hv { left: 4%; top: 30%; }
+.fixture-console--contact .fixture-switches { right: 14%; bottom: 24px; }
+.fixture-console--contact .fixture-spark { right: 18%; top: 37%; transform: rotate(-20deg); }
+.fixture-console--footer .fixture-exit { right: 3%; top: 8px; }
+.fixture-console--footer .fixture-case { display: none; }
+.fixture-console--footer .fixture-hv { display: none; }
+.fixture-console--footer .fixture-switches { left: 4%; top: 8px; transform: scale(.75); transform-origin: top left; }
+.fixture-console--footer .fixture-spark { left: 28%; top: 8px; transform: scale(.7); transform-origin: top left; }
+
+@media (max-width: 900px) {
+    .fixture-console { opacity: .55; }
+    .fixture-console--about .fixture-hv,
+    .fixture-console--skills .fixture-case,
+    .fixture-console--projects .fixture-switches,
+    .fixture-console--contact .fixture-spark { display: none; }
+}
+@media (max-width: 600px) {
+    .fixture-console { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .fixture-spark i { animation: none; }
+}
+
