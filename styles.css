@@ -1142,3 +1142,176 @@ body {
     .fixture-spark i { animation: none; }
 }
 
+/* Two additional worlds and their satellites stay inside the home hero. */
+.ph-layer-planets { z-index: 1; }
+.ph-planet {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 27%, #e2e2e2 0, #a7a7a7 31%, #555 70%, #171717 100%);
+    box-shadow: inset -8px -7px 14px rgba(0,0,0,.7), 0 0 22px rgba(210,210,210,.12);
+}
+.ph-planet-d { width: 72px; height: 72px; top: 34%; right: 21%; }
+.ph-planet-e { width: 112px; height: 112px; bottom: 11%; left: 30%; }
+.ph-planet-e::after {
+    content: "";
+    position: absolute;
+    inset: 27% -9%;
+    border-top: 1px solid rgba(230,230,230,.2);
+    border-radius: 50%;
+    transform: rotate(-18deg);
+}
+.ph-moon-orbit {
+    position: absolute;
+    width: 150%;
+    height: 66%;
+    left: 50%;
+    top: 50%;
+    border: 1px solid rgba(210,210,210,.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: moon-revolution 8s linear infinite;
+}
+.ph-planet-e .ph-moon-orbit { width: 145%; height: 62%; animation-duration: 11s; animation-direction: reverse; }
+.ph-moon-orbit b {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #f0f0f0, #777 68%, #222);
+    box-shadow: 0 0 7px rgba(240,240,240,.34);
+}
+@keyframes moon-revolution {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Repeating streaks give the star field occasional motion without obscuring copy. */
+.shooting-stars {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+.shooting-stars i {
+    position: absolute;
+    top: -8%;
+    right: -15%;
+    display: block;
+    width: 170px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(230,230,230,.2) 54%, #f4f4f4);
+    box-shadow: 0 0 7px rgba(230,230,230,.34);
+    transform: rotate(-38deg);
+    animation: shooting-star 8s linear infinite;
+}
+.shooting-stars i:nth-child(2) { top: -2%; animation-delay: 1.4s; animation-duration: 9s; }
+.shooting-stars i:nth-child(3) { top: 4%; animation-delay: 2.8s; animation-duration: 7s; width: 125px; }
+.shooting-stars i:nth-child(4) { top: 10%; animation-delay: 4.2s; animation-duration: 10s; width: 145px; }
+.shooting-stars i:nth-child(5) { top: 16%; animation-delay: 5.6s; animation-duration: 8.5s; width: 115px; }
+@keyframes shooting-star {
+    0%, 2% { opacity: 0; transform: translate3d(0, 0, 0) rotate(-38deg); }
+    4% { opacity: .88; }
+    34% { opacity: .72; transform: translate3d(-140vw, 110vh, 0) rotate(-38deg); }
+    40% { opacity: 0; }
+    100% { opacity: 0; transform: translate3d(-140vw, 110vh, 0) rotate(-38deg); }
+}
+@media (max-width: 600px) {
+    .ph-planet-d { width: 48px; height: 48px; right: 14%; top: 31%; }
+    .ph-planet-e { width: 76px; height: 76px; left: 18%; bottom: 13%; }
+    .ph-moon-orbit { width: 145%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ph-moon-orbit { animation-duration: 24s; }
+    .shooting-stars i { animation-duration: 20s; }
+}
+
+/* Outer Wilds inspired dusk color and a quiet alien treeline in the home sky. */
+.ph-hero {
+    background-color: #030509;
+    background-image:
+        radial-gradient(ellipse at 76% 69%, rgba(251,147,71,.28), transparent 17%),
+        radial-gradient(ellipse at 82% 64%, rgba(242,105,63,.2), transparent 31%),
+        radial-gradient(ellipse at 67% 44%, rgba(39,89,137,.31), transparent 34%),
+        radial-gradient(ellipse at 87% 27%, rgba(90,57,119,.25), transparent 33%),
+        radial-gradient(1px 1px at 8% 18%, #ddd 99%, transparent),
+        radial-gradient(1.5px 1.5px at 22% 72%, #aaa 99%, transparent),
+        radial-gradient(1px 1px at 37% 24%, #eee 99%, transparent),
+        radial-gradient(1px 1px at 51% 68%, #999 99%, transparent),
+        radial-gradient(1.5px 1.5px at 69% 33%, #ccc 99%, transparent),
+        radial-gradient(1px 1px at 82% 78%, #ddd 99%, transparent),
+        radial-gradient(1px 1px at 92% 15%, #aaa 99%, transparent),
+        linear-gradient(90deg, #030405 0%, rgba(3,4,7,.9) 34%, rgba(4,8,15,.42) 72%, rgba(4,7,13,.5) 100%);
+    background-size: auto;
+}
+.outer-wilds-scene {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.wilds-sun {
+    position: absolute;
+    width: clamp(38px, 5vw, 70px);
+    aspect-ratio: 1;
+    top: 64%;
+    left: 72%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 45% 45%, #fff2b8 0 8%, #ffd18a 25%, #e98b53 58%, rgba(222,110,64,.15) 72%, transparent 74%);
+    filter: drop-shadow(0 0 22px rgba(246,147,83,.65));
+}
+.wilds-ridge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 25%;
+    background: linear-gradient(180deg, #10151a, #050608 75%);
+    clip-path: polygon(0 52%, 9% 42%, 17% 55%, 25% 34%, 32% 47%, 42% 28%, 50% 44%, 61% 25%, 69% 40%, 77% 18%, 86% 38%, 94% 26%, 100% 36%, 100% 100%, 0 100%);
+    opacity: .8;
+}
+/* The orbit path stays still; only its satellite rotates around the planet. */
+.ph-moon-orbit {
+    width: 0;
+    height: 0;
+    border: 0;
+    animation-name: moon-satellite;
+    transform: none;
+}
+.ph-planet-d { --moon-distance: 58px; }
+.ph-planet-e { --moon-distance: 86px; }
+.ph-planet-e .ph-moon-orbit { width: 0; height: 0; }
+.ph-moon-orbit b {
+    top: -4px;
+    left: var(--moon-distance, 58px);
+}
+@keyframes moon-satellite {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Put the bright head at the leading end of each down-left streak. */
+.shooting-stars i {
+    background: linear-gradient(90deg, #f3e5ca 0%, rgba(210,210,210,.45) 14%, transparent 100%);
+}
+.ph-layer-mid,
+.ph-layer-front { z-index: 1; }
+.ph-layer-planets { z-index: 2; }
+.shooting-stars { z-index: 2; }
+.hero { z-index: 3; }
+
+@media (max-width: 600px) {
+    .wilds-sun { left: 70%; top: 67%; }
+    .wilds-ridge { height: 19%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ph-moon-orbit { animation-duration: 24s; }
+    .shooting-stars i { animation-duration: 20s; }
+}
+
