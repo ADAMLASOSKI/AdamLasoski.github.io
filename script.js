@@ -11,7 +11,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+var hero = document.getElementById('phHero');
+var layers = Array.prototype.slice.call(document.querySelectorAll('.parallax-layer'));
 
+var target = { x: 0, y: 0 };
+var current = { x: 0, y: 0 };
+var rafId = null;
+
+function onMouseMove(e) {
+  var rect = hero.getBoundingClientRect();
+  var cx = rect.left + rect.width / 2;
+  var cy = rect.top + rect.height / 2;
+  target.x = e.clientX - cx;
+  target.y = e.clientY - cy;
+}
+
+function onMouseLeave() {
+  target.x = 0;
+  target.y = 0;
+}
+
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function animate() {
+  current.x = lerp(current.x, target.x, 0.08);
+  current.y = lerp(current.y, target.y, 0.08);
+
+  layers.forEach(function (layer) {
+    var depth = parseFloat(layer.getAttribute('data-depth')) || 0;
+    var moveX = -current.x * depth;
+    var moveY = -current.y * depth;
+    layer.style.transform = 'translate3d(' + moveX.toFixed(2) + 'px,' + moveY.toFixed(2) + 'px,0)';
+  });
+
+  rafId = requestAnimationFrame(animate);
+}
+
+hero.addEventListener('mousemove', onMouseMove);
+hero.addEventListener('mouseleave', onMouseLeave);
+
+animate();
 // Active navigation link highlighting
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
